@@ -4,16 +4,16 @@
 var serverTotalScore;
 var serverHighScore;
 
- async function getFromServer()
+ (async function getFromServer()
  {
      serverTotalScore = await axios.get('/get/score');
 	 serverTotalScore = serverTotalScore.data.count;
      serverHighScore =  await axios.get('/get/high-score');
 	 serverHighScore  = serverHighScore.data.highScore;
 	 highScore.innerHTML = serverHighScore;
- }
+ })();
 
-getFromServer();
+
 
 const deathDate = '6 september 2069';
 

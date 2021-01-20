@@ -6,6 +6,7 @@ laser = new Audio("audio/Laser.mp3");
 
 }
 
+
 var turnedBig = false;
 var turnedSmall = false;
 var translatedinfovisible = false;
@@ -118,6 +119,12 @@ function Heart()
             localScore++;
             yourScore.innerHTML = localScore;
             this.added = true;
+			
+			if(localScore > serverHighScore)
+				{
+					highScore.innerHTML = localScore;	
+				}
+				
              addToServer();
         }
     }
@@ -130,8 +137,19 @@ function Heart()
      await axios.post('/count/score',{"count" : 1});
      if(localScore > serverHighScore)
      {
+		 
          await axios.post('/count/high-score',{"highScore" : localScore});
+		 
      }
+	 
+	 if( (highScore.innerHTML === '0') )
+		 {
+			 
+			 serverHighScore = await axios.get('/get/high-score');
+			 serverHighScore = serverHighScore.data.highScore;
+			 highScore.innerHTML = serverHighScore;
+			 
+		 }
  }
 function Star()
 {
@@ -215,7 +233,7 @@ function translateInfo()
         }
         else
         {
-            infosection.style.transform = 'translate(0,-95vh)'
+            infosection.style.transform = 'translate(0,93vh)'
             translatedinfovisible = false;
 
             makeHidden();
@@ -262,7 +280,7 @@ function checkCanvasSize()
             }
             else
             {
-                infosection.style.transform = 'translate(0,-95vh)'
+                infosection.style.transform = 'translate(0,93vh)'
 
                 makeHidden();
             }
