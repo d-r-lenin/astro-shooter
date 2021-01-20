@@ -24,12 +24,14 @@ var yourScore = document.getElementById("your-score-points");
 var highScore = document.getElementById("high-score-points");
 
 var localScore = 0;
+
 function debug(){
 	setTimeout(async()=>{
-	if( (highScore.inerHTML === '0') )
+	if(highScore.inerHTML === '0')
 		 {
 			 serverHighScore = await axios.get('/get/high-score');
 			 serverHighScore = serverHighScore.data.highScore;
+			 alert(serverHighScore);
 			 highScore.innerHTML = serverHighScore;
 
 		 }
