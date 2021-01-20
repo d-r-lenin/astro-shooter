@@ -25,20 +25,6 @@ var highScore = document.getElementById("high-score-points");
 
 var localScore = 0;
 
-async function debug(){
-	await setTimeout(async()=>{
-	if(highScore.inerHTML === '0')
-		 {
-			 serverHighScore = await axios.get('/get/high-score');
-			 serverHighScore = serverHighScore.data.highScore;
-			 alert(serverHighScore);
-			 highScore.innerHTML = serverHighScore;
-
-		 }
-	},300);
-}
-debug();
-
 function Heart()
 {
     this.x = random(10,width-10);
