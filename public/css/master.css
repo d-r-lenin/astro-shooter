@@ -230,11 +230,18 @@ body {
 
 @media (max-width: 600px) {
   div#container {
-    justify-content: space-around; }
+    align-items: center;
+    justify-content: center; }
     div#container #score {
       font-size: .8rem; }
       div#container #score .score-group {
-        margin: .3rem .8rem; }
+        margin: .3rem .8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center; }
+      div#container #score .score-text {
+        padding: .4rem; }
     div#container #title {
       font-size: 1.4rem;
       margin-bottom: .5rem; }
@@ -251,10 +258,10 @@ body {
         margin-top: .8rem;
         font-size: .8rem; }
   div#info-section {
-    transform: translate(0, -95vh);
-    flex-direction: column;
+    transform: translate(0, 90vh);
+    flex-direction: column-reverse;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-around; }
     div#info-section #info-content {
       flex-direction: column;
       min-width: 100%;
@@ -266,19 +273,19 @@ body {
         justify-content: center;
         align-items: center; }
         div#info-section #info-content .info-group .info-header {
-          font-size: 1.6rem;
-          margin-bottom: .4rem;
-          margin-top: .4rem; }
-        div#info-section #info-content .info-group #para-group {
           font-size: 1.2rem;
-          margin: .4rem 3rem;
+          margin-bottom: .3rem;
+          margin-top: .3rem; }
+        div#info-section #info-content .info-group #para-group {
+          font-size: 1rem;
+          margin: .3rem 2rem;
           text-align: center;
-          line-height: 1.3rem;
-          letter-spacing: .3rem; }
+          line-height: 1rem;
+          letter-spacing: .2rem; }
         div#info-section #info-content .info-group #quote {
-          font-size: 2rem;
+          font-size: 1.4rem;
           text-align: center;
-          padding: .4rem 0; }
+          padding: .3rem 0; }
     div#info-section #social {
       border-radius: .3rem;
       width: 95%;

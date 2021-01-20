@@ -14,7 +14,6 @@ app.get('/',(req,res)=>{
 app.get('/get/score',async(req,res)=>{
 	try{
 		const data=await file.get(score);
-		console.log(data);
 		res.send(data);
 	}catch(err){
 		console.log("error while geting value from file\n"+err);
@@ -24,7 +23,6 @@ app.get('/get/score',async(req,res)=>{
 app.get('/get/high-score',async(req,res)=>{
 	try{
 		const {highScore}=await file.get(hiScore);
-		console.log(highScore);
 		res.send({highScore});
 	}catch(err){
 		console.log("error while geting value from file(high score)\n"+err);
@@ -48,7 +46,6 @@ app.post('/count/score',async(req,res)=>{
 
 app.post('/count/high-score',async(req,res)=>{
 	try{
-		console.log(req.body)
 		await file.update(hiScore,req.body);
 		res.sendStatus(200);
 	}catch(err){
