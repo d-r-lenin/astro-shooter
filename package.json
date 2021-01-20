@@ -1,0 +1,17 @@
+{
+  "name": "new",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+	"server":"nodemon node index.js"
+  },
+  "author": "D.r.lenin",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.9.2"
+  }
+}

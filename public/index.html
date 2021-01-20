@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MyLifeTimer</title>
+
+         <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <link rel="icon" type="image/png" sizes="512x512" href="css/images/favicon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Aldrich&family=Hanalei+Fill&display=swap" rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/0618c6ba29.js" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="css/master.css">
+    </head>
+
+
+    <body id="bodyID">
+
+        <div id="bg"> </div>
+        <div id="info-section">
+
+            <div id="info-content">
+
+                <div id="about" class="info-group">
+                    <h2 class="info-header">About</h2>
+                    <div id="para-group">
+
+                        <p class="para">Game is devoloped using p5 library <br>(<a href="https://p5js.org/" target="_blank">P5js HOME</a>) </p>
+                        <br>
+                        <p class="para">Timer below denotes the life time of the designer.You play for the extension of his lifetime in this world.</p><br>
+                        <p class="para">High score is stored in database, so give your best!</p>
+                    </div>
+                </div>
+                <div id="instructions" class="info-group">
+                    <h2 class="info-header">Instructions</h2>
+                    <ul id="list">
+                        <li>1.Use mouse to aim</li>
+                        <li>2.Use Double click/space to shoot</li>
+                        <li>3.No limits are set, so play unlimited</li>
+
+                    </ul>
+                    <p id="quote" class="para">One for all! All for one!</p>
+                </div>
+
+            </div>
+
+            <div id="social">
+                <h3 id="social-text">Follow</h3>
+                <div id="icon-section">
+                    <i class="fab fa-github"> <a href="https://github.com/pauldedward" target="_blank"></a> </i>
+                    <i class="fab fa-linkedin-in"> <a href="https://www.linkedin.com/in/paul-d-edward-a6769b203/" target="_blank"></a> </i>
+                    <i class="fab fa-twitter"> <a href="https://twitter.com/PaulDEdward2" target="_blank"></a> </i>
+                    <i class="fab fa-instagram"  > <a href="https://www.instagram.com/paul_d_edward/" target="_blank"></a> </i>
+                </div>
+            </div>
+
+            <div id="info-switch">
+                <span id="above-fold" onclick="translateInfo();">Tap for details</span>
+            </div>
+        </div>
+
+        <div id="container">
+
+                <div id="header">
+                    <h1 id="title">MakeMeImmoRtaL</h1>
+                    <div id="score">
+                        <div id="your-score" class="score-group">
+                            <span class="score-text">Your score :</span>
+                            <span id="your-score-points" class="points" class="score-text">0</span>
+                        </div>
+                        <div id="high-score" class="score-group">
+                            <span class="score-text">High score :</span>
+                            <span id="high-score-points" class="points" class="score-text">0</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <main id="canvas"></main>
+
+                <div id="death-timer">
+                    <h3 id="papa">DaDa will sleep in</h3>
+
+                    <div id="count-container">
+
+                        <div class="countdown-el" id="years-c">
+                            <p class="big-text small-text" id="years">0</p>
+                            <span class="small-span">years</span>
+                        </div>
+
+                        <div class="countdown-el" id="days-c">
+                            <p class="big-text small-text" id="days">0</p>
+                            <span class="small-span">days</span>
+                        </div>
+
+                        <div class="countdown-el" id="hours-c">
+                            <p class="big-text small-text" id="hours">0</p>
+                            <span class="small-span">hours</span>
+                        </div>
+
+                        <div class="countdown-el" id="mins-c">
+                            <p class="big-text small-text" id="mins">0</p>
+                            <span class="small-span">mins</span>
+                        </div>
+
+                        <div class="countdown-el" id="secs-c">
+                            <p class="big-text small-text" id="secs">0</p>
+                            <span class="small-span">secs</span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="script.js"></script>
+        <script src="p5.min.js"></script>
+        <script src="sketch.js"></script>
+
+    </body>
+</html>
