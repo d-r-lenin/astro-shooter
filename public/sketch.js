@@ -24,7 +24,19 @@ var yourScore = document.getElementById("your-score-points");
 var highScore = document.getElementById("high-score-points");
 
 var localScore = 0;
+function debug(){
+	setTimeout(async()=>{
+	if( (highScore.inerHTML === '0') )
+		 {
+			 serverHighScore = await axios.get('/get/high-score');
+			 serverHighScore = serverHighScore.data.highScore;
+			 highScore.innerHTML = serverHighScore;
 
+		 }
+	},300);
+}
+
+debug();
 
 function Heart()
 {
@@ -135,6 +147,8 @@ function Heart()
  async function addToServer()
  {
      await axios.post('/count/score',{"count" : 1});
+     serverHighScore=await axios.get('/get/high-score');
+	 serverHighScore=serverHighScore.data.highScore;
      if(localScore > serverHighScore)
      {
 		 
