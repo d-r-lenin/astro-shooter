@@ -50,7 +50,7 @@ app.post('/count/score',async(req,res)=>{
 
 app.post('/count/high-score',async(req,res)=>{
 	try{
-		await Score.findByIdAndUpdate('6092303c6e78d72f309ce0ab',req.body,{ useFindAndModify:true });
+		await Score.findByIdAndUpdate('6092303c6e78d72f309ce0ab',req.body,{ useFindAndModify:true })
 		res.sendStatus(200);
 	}catch(err){
 		console.log("error while updating High Score value \n"+err);
