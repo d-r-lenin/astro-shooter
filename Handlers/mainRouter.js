@@ -28,6 +28,7 @@ app.get('/get/score',async(req,res)=>{
 app.get('/get/high-score',async(req,res)=>{
 	try{
 		const {highScore} = await Score.findById('609237090e782a0688f37212');
+		console.log(highScore);
 		res.send({highScore});
 	}catch(err){
 		console.log("error while geting value from file(high score)\n"+err);
