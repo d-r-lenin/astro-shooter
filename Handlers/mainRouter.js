@@ -28,7 +28,6 @@ app.get('/get/score',async(req,res)=>{
 app.get('/get/high-score',async(req,res)=>{
 	try{
 		const {highScore} = await Score.findById('609237090e782a0688f37212');
-		console.log(highScore+"hello");
 		res.send({highScore});
 	}catch(err){
 		console.log("error while geting value from file(high score)\n"+err);
@@ -51,7 +50,6 @@ app.post('/count/score',async(req,res)=>{
 app.post('/count/high-score',async(req,res)=>{
 	try{
 		const {highScore} = await Score.findById('609237090e782a0688f37212');
-		console.log(req.body.highScore + "hi");
 		if(highScore < req.body.highScore){
 			try{
 				await Score.findByIdAndUpdate('609237090e782a0688f37212',req.body,{ useFindAndModify:true })
