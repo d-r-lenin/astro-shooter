@@ -25,7 +25,6 @@ var highScore = document.getElementById("high-score-points");
 
 var localScore = 0;
 
-
 function Heart()
 {
     this.x = random(10,width-10);
@@ -135,6 +134,8 @@ function Heart()
  async function addToServer()
  {
      await axios.post('/count/score',{"count" : 1});
+     serverHighScore=await axios.get('/get/high-score');
+	 serverHighScore=serverHighScore.data.highScore;
      if(localScore > serverHighScore)
      {
 		 

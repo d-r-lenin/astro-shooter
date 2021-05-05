@@ -6,9 +6,9 @@ var serverHighScore;
 
  (async function getFromServer()
  {
-     serverTotalScore = await axios.get('/get/score');
+	 serverTotalScore = await axios.get('/get/score');
 	 serverTotalScore = serverTotalScore.data.count;
-     serverHighScore =  await axios.get('/get/high-score');
+	 serverHighScore =  await axios.get('/get/high-score');
 	 serverHighScore  = serverHighScore.data.highScore;
 	 highScore.innerHTML = serverHighScore;
  })();
@@ -56,3 +56,4 @@ function formatTime(time)
 countdown();
 
 setInterval(countdown,1000);
+

@@ -1,11 +1,17 @@
 const express=require('express');
+const mongoose = require('mongoose');
 
-const file=require('../modules/memCard');
+const Score = require('../models/score.js');
+
+mongoose.connect(`mongodb+srv://ricksdb-2:${process.env.PASS}@brother.bmzhj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+},()=>console.log('Database Connected..'));
+
 
 const app=express();
 
-const score='5e2d08a3';
-const hiScore='bfa28c99';
+mongoose.set('useFindAndModify', true);
 
 app.get('/',(req,res)=>{
 	res.sendFile('./public/index.html');
@@ -13,7 +19,7 @@ app.get('/',(req,res)=>{
 
 app.get('/get/score',async(req,res)=>{
 	try{
-		const data=await file.get(score);
+		const data = await Score.findById('6092303c6e78d72f309ce0ab');
 		res.send(data);
 	}catch(err){
 		console.log("error while geting value from file\n"+err);
@@ -22,36 +28,50 @@ app.get('/get/score',async(req,res)=>{
 
 app.get('/get/high-score',async(req,res)=>{
 	try{
-		const {highScore}=await file.get(hiScore);
+		const {highScore}=await Score.findById('6092303c6e78d72f309ce0ab');
 		res.send({highScore});
 	}catch(err){
 		console.log("error while geting value from file(high score)\n"+err);
 	}
-
-	
 })
 
-app.post('/count/score',async(req,res)=>{	
+app.post('/count/score',async(req,res)=>{
 	try{
-		let {count}=await file.get(score);
+		let {count}=await Score.findById('6092303c6e78d72f309ce0ab');
 		count+=req.body.count;
 		req.body.count=count;
-		await file.update(score,req.body);
+		await Score.findByIdAndUpdate('6092303c6e78d72f309ce0ab',req.body,{ useFindAndModify:true });
 		res.sendStatus(200);
 	}catch(err){
 		console.log("error while updating counted value \n"+err);
 	}
-	
+
 })
 
 app.post('/count/high-score',async(req,res)=>{
 	try{
-		await file.update(hiScore,req.body);
+		await Score.findByIdAndUpdate('6092303c6e78d72f309ce0ab',req.body,{ useFindAndModify:true })
 		res.sendStatus(200);
 	}catch(err){
 		console.log("error while updating High Score value \n"+err);
 	}
-	
+
 })
 
 module.exports=app;
+
+
+function reset(){
+	const data = new Score({
+		count:0,
+		highScore:0
+	});
+	fun(data);
+}
+async function fun(data){
+	await data.save().then(e => {
+		console.log("success    ::",e);
+	}).catch(e=>{
+		console.log(e);
+	})
+}
