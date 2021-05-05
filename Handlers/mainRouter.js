@@ -15,7 +15,7 @@ mongoose.set('useFindAndModify', true);
 app.get('/',(req,res)=>{
 	res.sendFile('./public/index.html');
 })
-
+//..
 app.get('/get/score',async(req,res)=>{
 	try{
 		const data = await Score.findById('609237090e782a0688f37212');
