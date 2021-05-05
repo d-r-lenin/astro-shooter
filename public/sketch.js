@@ -21,7 +21,7 @@ var social = document.getElementById("social");
 var aboveFold = document.getElementById("above-fold");
 var container = document.getElementById("container");
 var yourScore = document.getElementById("your-score-points");
-var highScore = document.getElementById("high-score-points");
+highScore = document.getElementById("high-score-points");
 
 var localScore = 0;
 
@@ -118,12 +118,12 @@ function Heart()
             localScore++;
             yourScore.innerHTML = localScore;
             this.added = true;
-			
+
 			if(localScore > serverHighScore)
 				{
-					highScore.innerHTML = localScore;	
+					highScore.innerHTML = localScore;
 				}
-				
+
              addToServer();
         }
     }
@@ -138,18 +138,18 @@ function Heart()
 	 serverHighScore=serverHighScore.data.highScore;
      if(localScore > serverHighScore)
      {
-		 
+
          await axios.post('/count/high-score',{"highScore" : localScore});
-		 
+
      }
-	 
+
 	 if( (highScore.innerHTML === '0') )
 		 {
-			 
+
 			 serverHighScore = await axios.get('/get/high-score');
 			 serverHighScore = serverHighScore.data.highScore;
 			 highScore.innerHTML = serverHighScore;
-			 
+
 		 }
  }
 function Star()
