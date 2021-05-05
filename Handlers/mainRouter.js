@@ -9,6 +9,8 @@ mongoose.connect(`mongodb+srv://ricksdb-2:${process.env.PASS}@brother.bmzhj.mong
 },()=>console.log('Database Connected..'));
 
 
+reset();
+
 const app=express();
 
 mongoose.set('useFindAndModify', true);
@@ -28,7 +30,7 @@ app.get('/get/score',async(req,res)=>{
 
 app.get('/get/high-score',async(req,res)=>{
 	try{
-		const {highScore}=await Score.findById('6092303c6e78d72f309ce0ab');
+		const {highScore} = await Score.findById('6092303c6e78d72f309ce0ab');
 		res.send({highScore});
 	}catch(err){
 		console.log("error while geting value from file(high score)\n"+err);
